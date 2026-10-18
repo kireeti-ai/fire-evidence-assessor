@@ -16,6 +16,7 @@ Implements `TerraWatch_Fire_Evidence_Assessor_Final_Design_v2.md`. It never conf
 - `docs/artifact/ARTIFACT_CONTRACT.md` the fail-closed artifact contract (`artifact.json` / `weights.pt` / `arrays.npz`), tooling and verification results.
 - `docs/calibration/` partition roles, threshold procedure, blockers, policy template (all decisions null).
 - `docs/integration/WEBSITE_INTEGRATION_CHECKLIST.md` checklist for the website repo (not accessible here; nothing integrated).
+- `docs/authenticity/` authenticity-head plan (data inventory, PROPOSED label policy, splits, operating point), held-out results and block-8 equivalence check. `docs/calibration/auth_policy.PROPOSED.json` holds **proposed** (not decided, not approved) policy values for it; `build_artifact calibrate` supports `authenticity.mode = "include_head"` (needs `--auth-data`) besides `exclude_by_policy`. The head is research-grade and not production-ready.
 - Current status: **checkpoint `lora_s0` is not approved; its artifact is INCOMPLETE; operational inference is disabled.**
 
 ## Experiments and notebooks
@@ -27,7 +28,7 @@ Implements `TerraWatch_Fire_Evidence_Assessor_Final_Design_v2.md`. It never conf
 ```
 pip install -e '.[dev]'          # CPU: everything but the model
 pip install -e '.[dev,model]'    # torch + open_clip for training / inference
-pytest
+pytest                           # pyproject sets pythonpath=src, so tests import THIS checkout even if an editable install points elsewhere
 ```
 Backbone note: OpenAI CLIP weights must be loaded as `ViT-B-16-quickgelu` (`model.CLIP_NAME`); plain `ViT-B-16` silently degrades them.
 

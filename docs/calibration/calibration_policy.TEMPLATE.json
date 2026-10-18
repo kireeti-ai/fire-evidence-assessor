@@ -1,11 +1,33 @@
 {
-  "_README": "TEMPLATE. Every null must be filled by the model owner / stakeholders. fire_assessor.build_artifact calibrate refuses to run while any required value is null. Values below are NOT suggestions and NOT approved.",
+  "_README": "TEMPLATE. Every null must be filled by the model owner / stakeholders. fire_assessor.build_artifact calibrate refuses to run while any required value is null. Values below are NOT suggestions and NOT approved. `authenticity` takes EITHER {mode: 'exclude_by_policy', reason} OR {mode: 'include_head', ...} (fields below; see docs/artifact/ARTIFACT_CONTRACT.md); `include_head` additionally needs --auth-data (docs/authenticity/auth_data_spec.EXAMPLE.json).",
   "alpha": null,
   "delta": null,
   "margin": null,
   "decided_by": null,
   "decided_at": null,
   "reference": null,
-  "ood": {"mode": null, "quantile": null, "min_auroc": null, "reason": null},
-  "authenticity": {"mode": null, "reason": null}
+  "ood": {
+    "mode": null,
+    "quantile": null,
+    "min_auroc": null,
+    "reason": null
+  },
+  "authenticity": {
+    "mode": null,
+    "reason": null,
+    "_include_head_fields": "used only when mode == 'include_head'; reason is used only for 'exclude_by_policy'",
+    "target_fpr": null,
+    "delta_fpr": null,
+    "inconclusive_fpr": null,
+    "l2_grid": null,
+    "l2_auc_tolerance": null,
+    "class_weight": null,
+    "seed": null,
+    "negative_sources": null,
+    "max_train_rows_per_source": null,
+    "label_policy": null,
+    "decided_by": null,
+    "decided_at": null,
+    "reference": null
+  }
 }

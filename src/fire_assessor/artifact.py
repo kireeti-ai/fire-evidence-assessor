@@ -29,7 +29,7 @@ from .authenticity import AuthenticityHead
 from .checkpoint import ArchitectureSpec, CheckpointFormatError, check_compatibility, inspect_checkpoint
 from .config import OUTPUT_NAMES
 from .decision import Thresholds
-from .hashing import canonical_json_sha256, sha256_file  # sha256_file re-exported for callers
+from .hashing import canonical_json_sha256, sha256_file, write_npz_deterministic  # sha256_file re-exported for callers
 from .ood import KNNOOD, MahalanobisOOD
 
 ARTIFACT_SCHEMA = "fire-assessor-artifact/1"
@@ -172,6 +172,31 @@ class ModelArtifact:
             b.append("OOD marked PROVIDED but detector state/cutoff missing")
         if st["authenticity"] == "EXCLUDED_BY_POLICY" and not self.authenticity.get("reason"):
             b.append("authenticity excluded but no recorded reason")
+        if st["authenticity"] == "EXCLUDED_BY_POLICY" and self.auth_head is not None:
+            b.append("authenticity marked EXCLUDED_BY_POLICY but an authenticity head is packaged")
+        if self.authenticity.get("status") == "PROVIDED":
+            a = self.authenticity
+            if self.auth_head is None:
+                b.append("authenticity marked PROVIDED but no head state is packaged")
+            else:
+                try:
+                    self.auth_head.validate((self.architecture.get("block_feature_tap") or {}).get("dim"))
+                except ValueError as e:
+                    b.append(f"authenticity head invalid: {e}")
+                if self.auth_head.lo is None:
+                    b.append("authenticity head has no recorded INCONCLUSIVE band")
+            pol = a.get("policy") or {}
+            for k in ("target_fpr", "delta_fpr", "inconclusive_fpr"):
+                if not isinstance(pol.get(k), (int, float)):
+                    b.append(f"authenticity policy.{k} not recorded (target false-flag rate / confidence / band are owner decisions)")
+            for k in ("decided_by", "decided_at", "reference"):
+                if not (isinstance(pol.get(k), str) and pol[k].strip()):
+                    b.append(f"authenticity policy.{k} not recorded")
+            src = (a.get("data") or {}).get("sources")
+            if not (isinstance(src, list) and src and all(isinstance(x, dict) and re.match(_HEX64, str(x.get("features_sha256", ""))) for x in src)):
+                b.append("authenticity data provenance (feature-file SHA-256s) not recorded")
+            if not isinstance(a.get("label_policy"), dict) or not a["label_policy"]:
+                b.append("authenticity label policy not recorded")
         for k in ("source", "initialization", "training_manifest"):
             if not (self.provenance or {}).get(k):
                 b.append(f"provenance.{k} not recorded")
@@ -218,7 +243,7 @@ class ModelArtifact:
             arrays.update({f"ood_{k}": np.asarray(v) for k, v in self.ood.state().items()})
         if self.auth_head is not None:
             arrays.update({f"auth_{k}": np.asarray(v) for k, v in self.auth_head.state().items()})
-        np.savez(d / "arrays.npz", **arrays)
+        write_npz_deterministic(d / "arrays.npz", arrays)
         files = {"arrays.npz": sha256_file(d / "arrays.npz")}
         if weights_src is not None:
             src = Path(weights_src)
@@ -276,7 +301,14 @@ class ModelArtifact:
         sub = lambda pre: {k[len(pre):]: arr[k] for k in arr.files if k.startswith(pre)}
         kind = meta["ood"].get("kind")
         ood = KNNOOD.from_state(sub("ood_")) if kind == "knn" else MahalanobisOOD.from_state(sub("ood_")) if kind == "mahalanobis" else None
-        head = AuthenticityHead.from_state(sub("auth_")) if meta["has_auth_head"] else None
+        try:
+            head = AuthenticityHead.from_state(sub("auth_")) if meta["has_auth_head"] else None
+            if head is not None:
+                head.validate()  # shapes / finiteness; the width is checked against the architecture tap by blockers() for PROVIDED heads
+        except (KeyError, ValueError, TypeError) as e:
+            raise ArtifactFormatError(f"authenticity head state unreadable or malformed: {e}") from e
+        if head is None and any(k.startswith("auth_") for k in arr.files):
+            raise ArtifactFormatError("arrays.npz holds authenticity state but artifact.json declares has_auth_head=false")
         th = meta.get("thresholds")
         if th is not None and not (isinstance(th, dict) and all(isinstance(th.get(k), (int, float)) for k in ("flames", "smoke"))):
             raise ArtifactFormatError("thresholds malformed")

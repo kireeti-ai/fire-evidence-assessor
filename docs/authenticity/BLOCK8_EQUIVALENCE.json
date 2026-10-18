@@ -1,0 +1,16 @@
+{
+ "n_images": 32,
+ "max_abs_diff": 0.015502214431762695,
+ "mean_abs_diff": 0.0003654825723913291,
+ "cosine_min": 0.9999796084718214,
+ "cosine_median": 0.9999967918137942,
+ "relative_l2_max": 0.006410213228785638,
+ "relative_l2_median": 0.0027192408354063747,
+ "max_abs_diff_in_units_of_feature_std": 0.1877814345225385,
+ "feature_std_mean": 0.05368249490857124,
+ "bitwise_identical": false,
+ "this_environment": {
+  "torch": "2.14.1+cpu",
+  "open_clip": "3.3.0"
+ }
+}

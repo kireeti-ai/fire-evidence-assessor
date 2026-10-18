@@ -1,0 +1,32 @@
+{
+  "_README": "PROPOSED authenticity-head policy, written by an AI coding session. NOT an owner decision and NOT approved. This file contains ONLY the `authenticity` block; merge it into a complete calibration policy (see calibration_policy.PROPOSED.json for the fire values) after a named human owner has confirmed or replaced every value. Changing any value requires rebuilding the artifact, which voids any approval. Values were fixed from the validation split's feasibility only (not tuned on test, held-out-generator, held-out-source or control data). See docs/authenticity/AUTH_HEAD_PLAN.md section 5 for the reasoning and docs/authenticity/AUTH_HEAD_RESULTS.md for what they yield.",
+  "authenticity": {
+    "mode": "include_head",
+    "target_fpr": 0.05,
+    "delta_fpr": 0.1,
+    "inconclusive_fpr": 0.15,
+    "l2_grid": [
+      0.001,
+      0.01,
+      0.1,
+      1.0
+    ],
+    "l2_auc_tolerance": 0.002,
+    "class_weight": "balanced",
+    "seed": 0,
+    "negative_sources": [
+      "synth_set",
+      "edit_set"
+    ],
+    "label_policy": {
+      "version": "AUTH-LABELS-PROPOSED-1",
+      "synthetic": "1 = generated image from any generator in the synthetic set; 0 = every real image (D-Fire originals, benign-edited originals, edited composites, control frames)",
+      "edited_or_composited": "1 = paste_flames, paste_smoke, cover_region edits; 0 = untouched originals and benign edits (crop, brightness, contrast/colour, resize, JPEG); undefined (excluded) for generated images",
+      "real_negatives": "D-Fire originals are ASSUMED real and unedited (no provenance check is possible)",
+      "status": "PROPOSED; confirmation by a named human owner required"
+    },
+    "decided_by": "PROPOSED by Claude Code session (not a human owner); pending confirmation by a named project owner",
+    "decided_at": "2026-10-18",
+    "reference": "docs/authenticity/AUTH_HEAD_PLAN.md sections 2-5"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "_README": "EXAMPLE data spec for `build_artifact calibrate --auth-data`. Paths are local to the research VM and read-only inputs. kinds: synth_set, edit_set, dfire, control (manifest-driven label rules in src/fire_assessor/auth_data.py) and table (generic). Only sources named in policy.authenticity.negative_sources enter fitting and threshold selection; the others are evaluation-only.",
+  "feature_extraction": "frozen base model (ViT-B-16-quickgelu / openai, no LoRA), fp16 on GPU via scripts/extract_features.py; block-8 pre-norm CLS token",
+  "sources": [
+    {
+      "kind": "synth_set",
+      "features": "/home/user/data/feat/synth_clean.npz",
+      "manifest": "/home/user/data/feat/synth_manifest.csv"
+    },
+    {
+      "kind": "edit_set",
+      "features": "/home/user/data/feat/edits_clean.npz",
+      "manifest": "/home/user/data/authenticity/edits_v1/edit_manifest.csv"
+    },
+    {
+      "kind": "dfire",
+      "features": "/home/user/data/feat/dfire_clean.npz",
+      "manifest": "/home/user/data/manifests/dfire_manifest.csv"
+    },
+    {
+      "kind": "control",
+      "features": "/home/user/data/feat/control_clean.npz",
+      "manifest": "/home/user/data/authenticity/control_set/control_manifest.csv"
+    }
+  ]
+}
