@@ -1,0 +1,1068 @@
+{
+  "options": {
+    "A_alpha0.05_margin0.05": {
+      "artifact_dir": "/tmp/claude-0/-home-user/0c0029f4-fa2b-5408-8da4-adf4858c44f3/scratchpad/assessor/final/fire-assessor-v1.0.0",
+      "status": "NOT_APPROVED",
+      "thresholds": {
+        "flames": 0.16801,
+        "smoke": 0.65822
+      },
+      "temperatures": {
+        "flames": 0.7122964572388175,
+        "smoke": 0.7288709469998619
+      },
+      "margin": 0.05,
+      "policy": null,
+      "partitions": {
+        "cal": {
+          "n": 1310,
+          "n_pos": 851,
+          "n_neg": 459,
+          "prevalence": 0.6496,
+          "label_counts": {
+            "ACTIVE_FIRE": 481,
+            "SMOKE_ONLY": 325,
+            "NO_VISIBLE_FIRE": 449,
+            "UNCERTAIN": 55
+          },
+          "miss_rate_any_positive": 0.0141,
+          "miss_rate_any_positive_ci95": [
+            0.007,
+            0.0222
+          ],
+          "false_alarm_rate_negative": 0.024,
+          "false_alarm_rate_negative_ci95": [
+            0.0102,
+            0.0401
+          ],
+          "uncertain_share_all": 0.042,
+          "uncertain_share_all_ci95": [
+            0.0321,
+            0.0538
+          ],
+          "uncertain_share_positive": 0.0517,
+          "uncertain_share_positive_ci95": [
+            0.0371,
+            0.0665
+          ],
+          "uncertain_share_negative": 0.024,
+          "uncertain_share_negative_ci95": [
+            0.0116,
+            0.0398
+          ],
+          "high_priority_share_all": 0.6573,
+          "high_priority_share_all_ci95": [
+            0.6282,
+            0.679
+          ],
+          "high_priority_rate_positive": 0.9859,
+          "high_priority_rate_positive_ci95": [
+            0.9778,
+            0.993
+          ],
+          "high_priority_rate_negative": 0.0479,
+          "high_priority_rate_negative_ci95": [
+            0.0284,
+            0.0692
+          ],
+          "flames_head_fnr": 0.036,
+          "flames_head_fnr_ci95": [
+            0.0211,
+            0.054
+          ],
+          "flames_head_precision": 0.8922,
+          "smoke_head_fnr": 0.0393,
+          "smoke_head_fnr_ci95": [
+            0.0257,
+            0.0522
+          ],
+          "smoke_head_precision": 0.9607,
+          "per_1000_reports": {
+            "prevalence_5pct": {
+              "HIGH_priority_items": 94.8,
+              "of_which_real_fire_or_smoke": 49.3,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.7,
+              "UNCERTAIN_items": 25.4
+            },
+            "prevalence_20pct": {
+              "HIGH_priority_items": 235.5,
+              "of_which_real_fire_or_smoke": 197.2,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 2.8,
+              "UNCERTAIN_items": 29.5
+            },
+            "prevalence_50pct": {
+              "HIGH_priority_items": 516.9,
+              "of_which_real_fire_or_smoke": 492.9,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 7.0,
+              "UNCERTAIN_items": 37.9
+            }
+          }
+        },
+        "val": {
+          "n": 1310,
+          "n_pos": 893,
+          "n_neg": 417,
+          "prevalence": 0.6817,
+          "label_counts": {
+            "ACTIVE_FIRE": 487,
+            "SMOKE_ONLY": 356,
+            "NO_VISIBLE_FIRE": 436,
+            "UNCERTAIN": 31
+          },
+          "miss_rate_any_positive": 0.0291,
+          "miss_rate_any_positive_ci95": [
+            0.0178,
+            0.0407
+          ],
+          "false_alarm_rate_negative": 0.012,
+          "false_alarm_rate_negative_ci95": [
+            0.0024,
+            0.0231
+          ],
+          "uncertain_share_all": 0.0237,
+          "uncertain_share_all_ci95": [
+            0.0164,
+            0.0317
+          ],
+          "uncertain_share_positive": 0.0325,
+          "uncertain_share_positive_ci95": [
+            0.0221,
+            0.0432
+          ],
+          "uncertain_share_negative": 0.0048,
+          "uncertain_share_negative_ci95": [
+            0.0,
+            0.0115
+          ],
+          "high_priority_share_all": 0.6672,
+          "high_priority_share_all_ci95": [
+            0.6378,
+            0.692
+          ],
+          "high_priority_rate_positive": 0.9709,
+          "high_priority_rate_positive_ci95": [
+            0.9593,
+            0.9822
+          ],
+          "high_priority_rate_negative": 0.0168,
+          "high_priority_rate_negative_ci95": [
+            0.0051,
+            0.0288
+          ],
+          "flames_head_fnr": 0.022,
+          "flames_head_fnr_ci95": [
+            0.0107,
+            0.0376
+          ],
+          "flames_head_precision": 0.89,
+          "smoke_head_fnr": 0.0462,
+          "smoke_head_fnr_ci95": [
+            0.0325,
+            0.0596
+          ],
+          "smoke_head_precision": 0.9561,
+          "per_1000_reports": {
+            "prevalence_5pct": {
+              "HIGH_priority_items": 64.5,
+              "of_which_real_fire_or_smoke": 48.5,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 1.5,
+              "UNCERTAIN_items": 6.2
+            },
+            "prevalence_20pct": {
+              "HIGH_priority_items": 207.6,
+              "of_which_real_fire_or_smoke": 194.2,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 5.8,
+              "UNCERTAIN_items": 10.3
+            },
+            "prevalence_50pct": {
+              "HIGH_priority_items": 493.9,
+              "of_which_real_fire_or_smoke": 485.4,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 14.6,
+              "UNCERTAIN_items": 18.6
+            }
+          }
+        },
+        "test": {
+          "n": 1310,
+          "n_pos": 829,
+          "n_neg": 481,
+          "prevalence": 0.6328,
+          "label_counts": {
+            "ACTIVE_FIRE": 511,
+            "SMOKE_ONLY": 281,
+            "NO_VISIBLE_FIRE": 477,
+            "UNCERTAIN": 41
+          },
+          "miss_rate_any_positive": 0.0121,
+          "miss_rate_any_positive_ci95": [
+            0.0054,
+            0.02
+          ],
+          "false_alarm_rate_negative": 0.0166,
+          "false_alarm_rate_negative_ci95": [
+            0.0064,
+            0.0286
+          ],
+          "uncertain_share_all": 0.0313,
+          "uncertain_share_all_ci95": [
+            0.0214,
+            0.0412
+          ],
+          "uncertain_share_positive": 0.0422,
+          "uncertain_share_positive_ci95": [
+            0.0268,
+            0.057
+          ],
+          "uncertain_share_negative": 0.0125,
+          "uncertain_share_negative_ci95": [
+            0.0041,
+            0.0236
+          ],
+          "high_priority_share_all": 0.6359,
+          "high_priority_share_all_ci95": [
+            0.6057,
+            0.6584
+          ],
+          "high_priority_rate_positive": 0.9879,
+          "high_priority_rate_positive_ci95": [
+            0.98,
+            0.9946
+          ],
+          "high_priority_rate_negative": 0.0291,
+          "high_priority_rate_negative_ci95": [
+            0.0154,
+            0.0452
+          ],
+          "flames_head_fnr": 0.0245,
+          "flames_head_fnr_ci95": [
+            0.0119,
+            0.039
+          ],
+          "flames_head_precision": 0.8966,
+          "smoke_head_fnr": 0.0597,
+          "smoke_head_fnr_ci95": [
+            0.0442,
+            0.0745
+          ],
+          "smoke_head_precision": 0.959,
+          "per_1000_reports": {
+            "prevalence_5pct": {
+              "HIGH_priority_items": 77.0,
+              "of_which_real_fire_or_smoke": 49.4,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.6,
+              "UNCERTAIN_items": 14.0
+            },
+            "prevalence_20pct": {
+              "HIGH_priority_items": 220.9,
+              "of_which_real_fire_or_smoke": 197.6,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 2.4,
+              "UNCERTAIN_items": 18.4
+            },
+            "prevalence_50pct": {
+              "HIGH_priority_items": 508.5,
+              "of_which_real_fire_or_smoke": 493.9,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 6.0,
+              "UNCERTAIN_items": 27.3
+            }
+          }
+        },
+        "xsrc_aof": {
+          "n": 8428,
+          "n_pos": 3385,
+          "n_neg": 5043,
+          "prevalence": 0.4016,
+          "label_counts": {
+            "ACTIVE_FIRE": 974,
+            "SMOKE_ONLY": 2002,
+            "NO_VISIBLE_FIRE": 5061,
+            "UNCERTAIN": 391
+          },
+          "miss_rate_any_positive": 0.3734,
+          "miss_rate_any_positive_ci95": [
+            0.3245,
+            0.4266
+          ],
+          "false_alarm_rate_negative": 0.2082,
+          "false_alarm_rate_negative_ci95": [
+            0.1666,
+            0.2403
+          ],
+          "uncertain_share_all": 0.0464,
+          "uncertain_share_all_ci95": [
+            0.04,
+            0.0535
+          ],
+          "uncertain_share_positive": 0.0576,
+          "uncertain_share_positive_ci95": [
+            0.0465,
+            0.0695
+          ],
+          "uncertain_share_negative": 0.0389,
+          "uncertain_share_negative_ci95": [
+            0.0308,
+            0.0477
+          ],
+          "high_priority_share_all": 0.3995,
+          "high_priority_share_all_ci95": [
+            0.3616,
+            0.4394
+          ],
+          "high_priority_rate_positive": 0.6266,
+          "high_priority_rate_positive_ci95": [
+            0.5734,
+            0.6755
+          ],
+          "high_priority_rate_negative": 0.2471,
+          "high_priority_rate_negative_ci95": [
+            0.2029,
+            0.2847
+          ],
+          "flames_head_fnr": 0.2946,
+          "flames_head_fnr_ci95": [
+            0.2092,
+            0.3982
+          ],
+          "flames_head_precision": 0.8417,
+          "smoke_head_fnr": 0.5154,
+          "smoke_head_fnr_ci95": [
+            0.4693,
+            0.562
+          ],
+          "smoke_head_precision": 0.5597,
+          "per_1000_reports": {
+            "prevalence_5pct": {
+              "HIGH_priority_items": 266.1,
+              "of_which_real_fire_or_smoke": 31.3,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 18.7,
+              "UNCERTAIN_items": 39.8
+            },
+            "prevalence_20pct": {
+              "HIGH_priority_items": 323.0,
+              "of_which_real_fire_or_smoke": 125.3,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 74.7,
+              "UNCERTAIN_items": 42.6
+            },
+            "prevalence_50pct": {
+              "HIGH_priority_items": 436.9,
+              "of_which_real_fire_or_smoke": 313.3,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 186.7,
+              "UNCERTAIN_items": 48.2
+            }
+          }
+        }
+      }
+    },
+    "B_alpha0.02_margin0.05": {
+      "artifact_dir": "/tmp/claude-0/-home-user/0c0029f4-fa2b-5408-8da4-adf4858c44f3/scratchpad/assessor/optionB/fire-assessor-v1.0.0",
+      "status": "NOT_APPROVED",
+      "thresholds": {
+        "flames": 0.02028,
+        "smoke": 0.27105
+      },
+      "temperatures": {
+        "flames": 0.7122964572388175,
+        "smoke": 0.7288709469998619
+      },
+      "margin": 0.05,
+      "policy": null,
+      "partitions": {
+        "cal": {
+          "n": 1310,
+          "n_pos": 851,
+          "n_neg": 459,
+          "prevalence": 0.6496,
+          "label_counts": {
+            "ACTIVE_FIRE": 557,
+            "SMOKE_ONLY": 0,
+            "NO_VISIBLE_FIRE": 0,
+            "UNCERTAIN": 753
+          },
+          "miss_rate_any_positive": 0.0,
+          "miss_rate_any_positive_ci95": [
+            0.0,
+            0.0
+          ],
+          "false_alarm_rate_negative": 0.0523,
+          "false_alarm_rate_negative_ci95": [
+            0.0361,
+            0.0722
+          ],
+          "uncertain_share_all": 0.5748,
+          "uncertain_share_all_ci95": [
+            0.5515,
+            0.6031
+          ],
+          "uncertain_share_positive": 0.3737,
+          "uncertain_share_positive_ci95": [
+            0.3403,
+            0.4115
+          ],
+          "uncertain_share_negative": 0.9477,
+          "uncertain_share_negative_ci95": [
+            0.9278,
+            0.9639
+          ],
+          "high_priority_share_all": 1.0,
+          "high_priority_share_all_ci95": [
+            1.0,
+            1.0
+          ],
+          "high_priority_rate_positive": 1.0,
+          "high_priority_rate_positive_ci95": [
+            1.0,
+            1.0
+          ],
+          "high_priority_rate_negative": 1.0,
+          "high_priority_rate_negative_ci95": [
+            1.0,
+            1.0
+          ],
+          "flames_head_fnr": 0.0106,
+          "flames_head_fnr_ci95": [
+            0.0031,
+            0.0208
+          ],
+          "flames_head_precision": 0.5845,
+          "smoke_head_fnr": 0.0127,
+          "smoke_head_fnr_ci95": [
+            0.0057,
+            0.0196
+          ],
+          "smoke_head_precision": 0.9274,
+          "per_1000_reports": {
+            "prevalence_5pct": {
+              "HIGH_priority_items": 1000.0,
+              "of_which_real_fire_or_smoke": 50.0,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.0,
+              "UNCERTAIN_items": 919.0
+            },
+            "prevalence_20pct": {
+              "HIGH_priority_items": 1000.0,
+              "of_which_real_fire_or_smoke": 200.0,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.0,
+              "UNCERTAIN_items": 832.9
+            },
+            "prevalence_50pct": {
+              "HIGH_priority_items": 1000.0,
+              "of_which_real_fire_or_smoke": 500.0,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.0,
+              "UNCERTAIN_items": 660.7
+            }
+          }
+        },
+        "val": {
+          "n": 1310,
+          "n_pos": 893,
+          "n_neg": 417,
+          "prevalence": 0.6817,
+          "label_counts": {
+            "ACTIVE_FIRE": 550,
+            "SMOKE_ONLY": 0,
+            "NO_VISIBLE_FIRE": 0,
+            "UNCERTAIN": 760
+          },
+          "miss_rate_any_positive": 0.0,
+          "miss_rate_any_positive_ci95": [
+            0.0,
+            0.0
+          ],
+          "false_alarm_rate_negative": 0.0288,
+          "false_alarm_rate_negative_ci95": [
+            0.0132,
+            0.046
+          ],
+          "uncertain_share_all": 0.5802,
+          "uncertain_share_all_ci95": [
+            0.5568,
+            0.605
+          ],
+          "uncertain_share_positive": 0.3975,
+          "uncertain_share_positive_ci95": [
+            0.364,
+            0.4292
+          ],
+          "uncertain_share_negative": 0.9712,
+          "uncertain_share_negative_ci95": [
+            0.954,
+            0.9868
+          ],
+          "high_priority_share_all": 1.0,
+          "high_priority_share_all_ci95": [
+            1.0,
+            1.0
+          ],
+          "high_priority_rate_positive": 1.0,
+          "high_priority_rate_positive_ci95": [
+            1.0,
+            1.0
+          ],
+          "high_priority_rate_negative": 1.0,
+          "high_priority_rate_negative_ci95": [
+            1.0,
+            1.0
+          ],
+          "flames_head_fnr": 0.0,
+          "flames_head_fnr_ci95": [
+            0.0,
+            0.0
+          ],
+          "flames_head_precision": 0.5709,
+          "smoke_head_fnr": 0.0255,
+          "smoke_head_fnr_ci95": [
+            0.0157,
+            0.0354
+          ],
+          "smoke_head_precision": 0.9271,
+          "per_1000_reports": {
+            "prevalence_5pct": {
+              "HIGH_priority_items": 1000.0,
+              "of_which_real_fire_or_smoke": 50.0,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.0,
+              "UNCERTAIN_items": 942.5
+            },
+            "prevalence_20pct": {
+              "HIGH_priority_items": 1000.0,
+              "of_which_real_fire_or_smoke": 200.0,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.0,
+              "UNCERTAIN_items": 856.5
+            },
+            "prevalence_50pct": {
+              "HIGH_priority_items": 1000.0,
+              "of_which_real_fire_or_smoke": 500.0,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.0,
+              "UNCERTAIN_items": 684.4
+            }
+          }
+        },
+        "test": {
+          "n": 1310,
+          "n_pos": 829,
+          "n_neg": 481,
+          "prevalence": 0.6328,
+          "label_counts": {
+            "ACTIVE_FIRE": 587,
+            "SMOKE_ONLY": 0,
+            "NO_VISIBLE_FIRE": 0,
+            "UNCERTAIN": 723
+          },
+          "miss_rate_any_positive": 0.0,
+          "miss_rate_any_positive_ci95": [
+            0.0,
+            0.0
+          ],
+          "false_alarm_rate_negative": 0.0437,
+          "false_alarm_rate_negative_ci95": [
+            0.0279,
+            0.0632
+          ],
+          "uncertain_share_all": 0.5519,
+          "uncertain_share_all_ci95": [
+            0.5275,
+            0.5813
+          ],
+          "uncertain_share_positive": 0.3172,
+          "uncertain_share_positive_ci95": [
+            0.2874,
+            0.3482
+          ],
+          "uncertain_share_negative": 0.9563,
+          "uncertain_share_negative_ci95": [
+            0.9368,
+            0.9721
+          ],
+          "high_priority_share_all": 1.0,
+          "high_priority_share_all_ci95": [
+            1.0,
+            1.0
+          ],
+          "high_priority_rate_positive": 1.0,
+          "high_priority_rate_positive_ci95": [
+            1.0,
+            1.0
+          ],
+          "high_priority_rate_negative": 1.0,
+          "high_priority_rate_negative_ci95": [
+            1.0,
+            1.0
+          ],
+          "flames_head_fnr": 0.0041,
+          "flames_head_fnr_ci95": [
+            0.0,
+            0.01
+          ],
+          "flames_head_precision": 0.5946,
+          "smoke_head_fnr": 0.0233,
+          "smoke_head_fnr_ci95": [
+            0.0137,
+            0.0339
+          ],
+          "smoke_head_precision": 0.9377,
+          "per_1000_reports": {
+            "prevalence_5pct": {
+              "HIGH_priority_items": 1000.0,
+              "of_which_real_fire_or_smoke": 50.0,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.0,
+              "UNCERTAIN_items": 924.3
+            },
+            "prevalence_20pct": {
+              "HIGH_priority_items": 1000.0,
+              "of_which_real_fire_or_smoke": 200.0,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.0,
+              "UNCERTAIN_items": 828.5
+            },
+            "prevalence_50pct": {
+              "HIGH_priority_items": 1000.0,
+              "of_which_real_fire_or_smoke": 500.0,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.0,
+              "UNCERTAIN_items": 636.8
+            }
+          }
+        },
+        "xsrc_aof": {
+          "n": 8428,
+          "n_pos": 3385,
+          "n_neg": 5043,
+          "prevalence": 0.4016,
+          "label_counts": {
+            "ACTIVE_FIRE": 1170,
+            "SMOKE_ONLY": 0,
+            "NO_VISIBLE_FIRE": 0,
+            "UNCERTAIN": 7258
+          },
+          "miss_rate_any_positive": 0.0,
+          "miss_rate_any_positive_ci95": [
+            0.0,
+            0.0
+          ],
+          "false_alarm_rate_negative": 0.052,
+          "false_alarm_rate_negative_ci95": [
+            0.0391,
+            0.0683
+          ],
+          "uncertain_share_all": 0.8612,
+          "uncertain_share_all_ci95": [
+            0.8343,
+            0.8886
+          ],
+          "uncertain_share_positive": 0.7318,
+          "uncertain_share_positive_ci95": [
+            0.6715,
+            0.8006
+          ],
+          "uncertain_share_negative": 0.948,
+          "uncertain_share_negative_ci95": [
+            0.9317,
+            0.9609
+          ],
+          "high_priority_share_all": 1.0,
+          "high_priority_share_all_ci95": [
+            1.0,
+            1.0
+          ],
+          "high_priority_rate_positive": 1.0,
+          "high_priority_rate_positive_ci95": [
+            1.0,
+            1.0
+          ],
+          "high_priority_rate_negative": 1.0,
+          "high_priority_rate_negative_ci95": [
+            1.0,
+            1.0
+          ],
+          "flames_head_fnr": 0.1379,
+          "flames_head_fnr_ci95": [
+            0.0784,
+            0.2099
+          ],
+          "flames_head_precision": 0.5759,
+          "smoke_head_fnr": 0.3456,
+          "smoke_head_fnr_ci95": [
+            0.3017,
+            0.3897
+          ],
+          "smoke_head_precision": 0.5108,
+          "per_1000_reports": {
+            "prevalence_5pct": {
+              "HIGH_priority_items": 1000.0,
+              "of_which_real_fire_or_smoke": 50.0,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.0,
+              "UNCERTAIN_items": 937.2
+            },
+            "prevalence_20pct": {
+              "HIGH_priority_items": 1000.0,
+              "of_which_real_fire_or_smoke": 200.0,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.0,
+              "UNCERTAIN_items": 904.8
+            },
+            "prevalence_50pct": {
+              "HIGH_priority_items": 1000.0,
+              "of_which_real_fire_or_smoke": 500.0,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.0,
+              "UNCERTAIN_items": 839.9
+            }
+          }
+        }
+      }
+    },
+    "B2_alpha0.02_margin0.01": {
+      "artifact_dir": "/tmp/claude-0/-home-user/0c0029f4-fa2b-5408-8da4-adf4858c44f3/scratchpad/assessor/optionB2/fire-assessor-v1.0.0",
+      "status": "NOT_APPROVED",
+      "thresholds": {
+        "flames": 0.02028,
+        "smoke": 0.27105
+      },
+      "temperatures": {
+        "flames": 0.7122964572388175,
+        "smoke": 0.7288709469998619
+      },
+      "margin": 0.01,
+      "policy": null,
+      "partitions": {
+        "cal": {
+          "n": 1310,
+          "n_pos": 851,
+          "n_neg": 459,
+          "prevalence": 0.6496,
+          "label_counts": {
+            "ACTIVE_FIRE": 701,
+            "SMOKE_ONLY": 71,
+            "NO_VISIBLE_FIRE": 189,
+            "UNCERTAIN": 349
+          },
+          "miss_rate_any_positive": 0.0047,
+          "miss_rate_any_positive_ci95": [
+            0.0011,
+            0.0093
+          ],
+          "false_alarm_rate_negative": 0.146,
+          "false_alarm_rate_negative_ci95": [
+            0.1158,
+            0.1841
+          ],
+          "uncertain_share_all": 0.2664,
+          "uncertain_share_all_ci95": [
+            0.2439,
+            0.2932
+          ],
+          "uncertain_share_positive": 0.1669,
+          "uncertain_share_positive_ci95": [
+            0.1401,
+            0.1942
+          ],
+          "uncertain_share_negative": 0.451,
+          "uncertain_share_negative_ci95": [
+            0.4123,
+            0.4995
+          ],
+          "high_priority_share_all": 0.8557,
+          "high_priority_share_all_ci95": [
+            0.8362,
+            0.8763
+          ],
+          "high_priority_rate_positive": 0.9953,
+          "high_priority_rate_positive_ci95": [
+            0.9907,
+            0.9989
+          ],
+          "high_priority_rate_negative": 0.5969,
+          "high_priority_rate_negative_ci95": [
+            0.5535,
+            0.6455
+          ],
+          "flames_head_fnr": 0.0106,
+          "flames_head_fnr_ci95": [
+            0.0031,
+            0.0208
+          ],
+          "flames_head_precision": 0.5845,
+          "smoke_head_fnr": 0.0127,
+          "smoke_head_fnr_ci95": [
+            0.0057,
+            0.0196
+          ],
+          "smoke_head_precision": 0.9274,
+          "per_1000_reports": {
+            "prevalence_5pct": {
+              "HIGH_priority_items": 616.8,
+              "of_which_real_fire_or_smoke": 49.8,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.2,
+              "UNCERTAIN_items": 436.8
+            },
+            "prevalence_20pct": {
+              "HIGH_priority_items": 676.6,
+              "of_which_real_fire_or_smoke": 199.1,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.9,
+              "UNCERTAIN_items": 394.2
+            },
+            "prevalence_50pct": {
+              "HIGH_priority_items": 796.1,
+              "of_which_real_fire_or_smoke": 497.6,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 2.4,
+              "UNCERTAIN_items": 308.9
+            }
+          }
+        },
+        "val": {
+          "n": 1310,
+          "n_pos": 893,
+          "n_neg": 417,
+          "prevalence": 0.6817,
+          "label_counts": {
+            "ACTIVE_FIRE": 703,
+            "SMOKE_ONLY": 58,
+            "NO_VISIBLE_FIRE": 227,
+            "UNCERTAIN": 322
+          },
+          "miss_rate_any_positive": 0.0112,
+          "miss_rate_any_positive_ci95": [
+            0.0046,
+            0.018
+          ],
+          "false_alarm_rate_negative": 0.1295,
+          "false_alarm_rate_negative_ci95": [
+            0.0962,
+            0.1599
+          ],
+          "uncertain_share_all": 0.2458,
+          "uncertain_share_all_ci95": [
+            0.2248,
+            0.2691
+          ],
+          "uncertain_share_positive": 0.1971,
+          "uncertain_share_positive_ci95": [
+            0.1701,
+            0.2213
+          ],
+          "uncertain_share_negative": 0.3501,
+          "uncertain_share_negative_ci95": [
+            0.3065,
+            0.3924
+          ],
+          "high_priority_share_all": 0.8267,
+          "high_priority_share_all_ci95": [
+            0.8061,
+            0.8458
+          ],
+          "high_priority_rate_positive": 0.9888,
+          "high_priority_rate_positive_ci95": [
+            0.982,
+            0.9954
+          ],
+          "high_priority_rate_negative": 0.4796,
+          "high_priority_rate_negative_ci95": [
+            0.44,
+            0.5238
+          ],
+          "flames_head_fnr": 0.0,
+          "flames_head_fnr_ci95": [
+            0.0,
+            0.0
+          ],
+          "flames_head_precision": 0.5709,
+          "smoke_head_fnr": 0.0255,
+          "smoke_head_fnr_ci95": [
+            0.0157,
+            0.0354
+          ],
+          "smoke_head_precision": 0.9271,
+          "per_1000_reports": {
+            "prevalence_5pct": {
+              "HIGH_priority_items": 505.1,
+              "of_which_real_fire_or_smoke": 49.4,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.6,
+              "UNCERTAIN_items": 342.5
+            },
+            "prevalence_20pct": {
+              "HIGH_priority_items": 581.4,
+              "of_which_real_fire_or_smoke": 197.8,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 2.2,
+              "UNCERTAIN_items": 319.5
+            },
+            "prevalence_50pct": {
+              "HIGH_priority_items": 734.2,
+              "of_which_real_fire_or_smoke": 494.4,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 5.6,
+              "UNCERTAIN_items": 273.6
+            }
+          }
+        },
+        "test": {
+          "n": 1310,
+          "n_pos": 829,
+          "n_neg": 481,
+          "prevalence": 0.6328,
+          "label_counts": {
+            "ACTIVE_FIRE": 720,
+            "SMOKE_ONLY": 41,
+            "NO_VISIBLE_FIRE": 261,
+            "UNCERTAIN": 288
+          },
+          "miss_rate_any_positive": 0.0012,
+          "miss_rate_any_positive_ci95": [
+            0.0,
+            0.0047
+          ],
+          "false_alarm_rate_negative": 0.1164,
+          "false_alarm_rate_negative_ci95": [
+            0.087,
+            0.1438
+          ],
+          "uncertain_share_all": 0.2198,
+          "uncertain_share_all_ci95": [
+            0.2008,
+            0.2443
+          ],
+          "uncertain_share_positive": 0.1484,
+          "uncertain_share_positive_ci95": [
+            0.1241,
+            0.1723
+          ],
+          "uncertain_share_negative": 0.343,
+          "uncertain_share_negative_ci95": [
+            0.3072,
+            0.3866
+          ],
+          "high_priority_share_all": 0.8008,
+          "high_priority_share_all_ci95": [
+            0.779,
+            0.8218
+          ],
+          "high_priority_rate_positive": 0.9988,
+          "high_priority_rate_positive_ci95": [
+            0.9953,
+            1.0
+          ],
+          "high_priority_rate_negative": 0.4595,
+          "high_priority_rate_negative_ci95": [
+            0.4212,
+            0.5068
+          ],
+          "flames_head_fnr": 0.0041,
+          "flames_head_fnr_ci95": [
+            0.0,
+            0.01
+          ],
+          "flames_head_precision": 0.5946,
+          "smoke_head_fnr": 0.0233,
+          "smoke_head_fnr_ci95": [
+            0.0137,
+            0.0339
+          ],
+          "smoke_head_precision": 0.9377,
+          "per_1000_reports": {
+            "prevalence_5pct": {
+              "HIGH_priority_items": 486.5,
+              "of_which_real_fire_or_smoke": 49.9,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.1,
+              "UNCERTAIN_items": 333.3
+            },
+            "prevalence_20pct": {
+              "HIGH_priority_items": 567.4,
+              "of_which_real_fire_or_smoke": 199.8,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.2,
+              "UNCERTAIN_items": 304.1
+            },
+            "prevalence_50pct": {
+              "HIGH_priority_items": 729.1,
+              "of_which_real_fire_or_smoke": 499.4,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 0.6,
+              "UNCERTAIN_items": 245.7
+            }
+          }
+        },
+        "xsrc_aof": {
+          "n": 8428,
+          "n_pos": 3385,
+          "n_neg": 5043,
+          "prevalence": 0.4016,
+          "label_counts": {
+            "ACTIVE_FIRE": 1658,
+            "SMOKE_ONLY": 2317,
+            "NO_VISIBLE_FIRE": 2790,
+            "UNCERTAIN": 1663
+          },
+          "miss_rate_any_positive": 0.1938,
+          "miss_rate_any_positive_ci95": [
+            0.1557,
+            0.2351
+          ],
+          "false_alarm_rate_negative": 0.3555,
+          "false_alarm_rate_negative_ci95": [
+            0.308,
+            0.401
+          ],
+          "uncertain_share_all": 0.1973,
+          "uncertain_share_all_ci95": [
+            0.1778,
+            0.2188
+          ],
+          "uncertain_share_positive": 0.1616,
+          "uncertain_share_positive_ci95": [
+            0.1267,
+            0.2055
+          ],
+          "uncertain_share_negative": 0.2213,
+          "uncertain_share_negative_ci95": [
+            0.1974,
+            0.243
+          ],
+          "high_priority_share_all": 0.669,
+          "high_priority_share_all_ci95": [
+            0.6372,
+            0.699
+          ],
+          "high_priority_rate_positive": 0.8062,
+          "high_priority_rate_positive_ci95": [
+            0.7649,
+            0.8443
+          ],
+          "high_priority_rate_negative": 0.5768,
+          "high_priority_rate_negative_ci95": [
+            0.5383,
+            0.6184
+          ],
+          "flames_head_fnr": 0.1379,
+          "flames_head_fnr_ci95": [
+            0.0784,
+            0.2099
+          ],
+          "flames_head_precision": 0.5759,
+          "smoke_head_fnr": 0.3456,
+          "smoke_head_fnr_ci95": [
+            0.3017,
+            0.3897
+          ],
+          "smoke_head_precision": 0.5108,
+          "per_1000_reports": {
+            "prevalence_5pct": {
+              "HIGH_priority_items": 588.3,
+              "of_which_real_fire_or_smoke": 40.3,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 9.7,
+              "UNCERTAIN_items": 218.3
+            },
+            "prevalence_20pct": {
+              "HIGH_priority_items": 622.7,
+              "of_which_real_fire_or_smoke": 161.2,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 38.8,
+              "UNCERTAIN_items": 209.4
+            },
+            "prevalence_50pct": {
+              "HIGH_priority_items": 691.5,
+              "of_which_real_fire_or_smoke": 403.1,
+              "real_fire_or_smoke_labelled_NO_VISIBLE_FIRE": 96.9,
+              "UNCERTAIN_items": 191.5
+            }
+          }
+        }
+      }
+    }
+  },
+  "assumptions": {
+    "prevalences": [
+      0.05,
+      0.2,
+      0.5
+    ],
+    "note": "Projections apply class-conditional rates to assumed prevalences; field prevalence is unknown."
+  }
+}
