@@ -1,0 +1,355 @@
+{
+  "artifact": "/tmp/claude-0/-home-user/0c0029f4-fa2b-5408-8da4-adf4858c44f3/scratchpad/assessor/bundle_v1_notapproved",
+  "artifact_json_sha256": "d8773fd5a18135010ac6d7b0f25bcb6a909e0369d6239bcb5b755259b1c1163e",
+  "model_version": "fire-assessor-v1.0.0",
+  "artifact_status": "NOT_APPROVED",
+  "checkpoint_sha256": "7bd5498f04838fe19240da2b7339d794cc5fc3948074a0d826c33303d5c42dfa",
+  "uncertainty_margin": 0.05,
+  "generated_at": "2026-10-18T08:03:56+00:00",
+  "partitions": {
+    "cal": {
+      "n": 1310,
+      "n_groups": 1310,
+      "heads": {
+        "flames": {
+          "prevalence": 0.3603,
+          "roc_auc": 0.9881,
+          "roc_auc_ci95": [
+            0.9821,
+            0.993
+          ],
+          "pr_auc": 0.9855,
+          "pr_auc_ci95": [
+            0.9792,
+            0.9908
+          ],
+          "temperature": 0.7122964572388175,
+          "threshold": 0.168011,
+          "ece_raw": 0.0453,
+          "ece_calibrated": 0.0159,
+          "brier_raw": 0.0318,
+          "brier_calibrated": 0.0307,
+          "fnr": 0.036,
+          "fnr_ci95": [
+            0.0207,
+            0.054
+          ],
+          "precision": 0.8922,
+          "precision_ci95": [
+            0.8628,
+            0.9186
+          ],
+          "flagged_share": 0.3893,
+          "confusion": {
+            "tp": 455,
+            "fp": 55,
+            "tn": 783,
+            "fn": 17
+          }
+        },
+        "smoke": {
+          "prevalence": 0.6023,
+          "roc_auc": 0.9824,
+          "roc_auc_ci95": [
+            0.9741,
+            0.9893
+          ],
+          "pr_auc": 0.983,
+          "pr_auc_ci95": [
+            0.9723,
+            0.991
+          ],
+          "temperature": 0.7288709469998619,
+          "threshold": 0.658225,
+          "ece_raw": 0.0395,
+          "ece_calibrated": 0.0176,
+          "brier_raw": 0.0386,
+          "brier_calibrated": 0.0374,
+          "fnr": 0.0393,
+          "fnr_ci95": [
+            0.026,
+            0.0532
+          ],
+          "precision": 0.9607,
+          "precision_ci95": [
+            0.9479,
+            0.9734
+          ],
+          "flagged_share": 0.6023,
+          "confusion": {
+            "tp": 758,
+            "fp": 31,
+            "tn": 490,
+            "fn": 31
+          }
+        }
+      },
+      "derived_label_counts": {
+        "ACTIVE_FIRE": 481,
+        "UNCERTAIN": 55,
+        "SMOKE_ONLY": 325,
+        "NO_VISIBLE_FIRE": 449
+      },
+      "export_sha256": "87f2144fa0e56f535f4734eb803993de9068cacf52566c6b4103b45116188e6c",
+      "role": "calibration source (in-sample for thresholds)"
+    },
+    "val": {
+      "n": 1310,
+      "n_groups": 1310,
+      "heads": {
+        "flames": {
+          "prevalence": 0.3473,
+          "roc_auc": 0.9924,
+          "roc_auc_ci95": [
+            0.9887,
+            0.9954
+          ],
+          "pr_auc": 0.9869,
+          "pr_auc_ci95": [
+            0.9809,
+            0.9917
+          ],
+          "temperature": 0.7122964572388175,
+          "threshold": 0.168011,
+          "ece_raw": 0.0454,
+          "ece_calibrated": 0.0191,
+          "brier_raw": 0.0299,
+          "brier_calibrated": 0.0283,
+          "fnr": 0.022,
+          "fnr_ci95": [
+            0.009,
+            0.037
+          ],
+          "precision": 0.89,
+          "precision_ci95": [
+            0.8621,
+            0.9132
+          ],
+          "flagged_share": 0.3817,
+          "confusion": {
+            "tp": 445,
+            "fp": 55,
+            "tn": 800,
+            "fn": 10
+          }
+        },
+        "smoke": {
+          "prevalence": 0.6275,
+          "roc_auc": 0.9824,
+          "roc_auc_ci95": [
+            0.9762,
+            0.9876
+          ],
+          "pr_auc": 0.9876,
+          "pr_auc_ci95": [
+            0.9813,
+            0.9921
+          ],
+          "temperature": 0.7288709469998619,
+          "threshold": 0.658225,
+          "ece_raw": 0.0369,
+          "ece_calibrated": 0.0178,
+          "brier_raw": 0.0451,
+          "brier_calibrated": 0.0452,
+          "fnr": 0.0462,
+          "fnr_ci95": [
+            0.0319,
+            0.0592
+          ],
+          "precision": 0.9561,
+          "precision_ci95": [
+            0.9428,
+            0.9676
+          ],
+          "flagged_share": 0.626,
+          "confusion": {
+            "tp": 784,
+            "fp": 36,
+            "tn": 452,
+            "fn": 38
+          }
+        }
+      },
+      "derived_label_counts": {
+        "ACTIVE_FIRE": 487,
+        "UNCERTAIN": 31,
+        "SMOKE_ONLY": 356,
+        "NO_VISIBLE_FIRE": 436
+      },
+      "export_sha256": "463005d03a2da4b0d788a29f475eaf559f67023093cbd72019b2a66dc0cc3dbd",
+      "role": "checkpoint-selection partition (not independent)"
+    },
+    "test": {
+      "n": 1310,
+      "n_groups": 1310,
+      "heads": {
+        "flames": {
+          "prevalence": 0.3733,
+          "roc_auc": 0.9913,
+          "roc_auc_ci95": [
+            0.9861,
+            0.9955
+          ],
+          "pr_auc": 0.9885,
+          "pr_auc_ci95": [
+            0.9819,
+            0.9936
+          ],
+          "temperature": 0.7122964572388175,
+          "threshold": 0.168011,
+          "ece_raw": 0.0516,
+          "ece_calibrated": 0.0198,
+          "brier_raw": 0.0299,
+          "brier_calibrated": 0.0289,
+          "fnr": 0.0245,
+          "fnr_ci95": [
+            0.0118,
+            0.0394
+          ],
+          "precision": 0.8966,
+          "precision_ci95": [
+            0.8681,
+            0.9214
+          ],
+          "flagged_share": 0.4061,
+          "confusion": {
+            "tp": 477,
+            "fp": 55,
+            "tn": 766,
+            "fn": 12
+          }
+        },
+        "smoke": {
+          "prevalence": 0.5885,
+          "roc_auc": 0.9857,
+          "roc_auc_ci95": [
+            0.9798,
+            0.9911
+          ],
+          "pr_auc": 0.9867,
+          "pr_auc_ci95": [
+            0.9782,
+            0.9935
+          ],
+          "temperature": 0.7288709469998619,
+          "threshold": 0.658225,
+          "ece_raw": 0.0414,
+          "ece_calibrated": 0.0197,
+          "brier_raw": 0.041,
+          "brier_calibrated": 0.0408,
+          "fnr": 0.0597,
+          "fnr_ci95": [
+            0.044,
+            0.0765
+          ],
+          "precision": 0.959,
+          "precision_ci95": [
+            0.9447,
+            0.9728
+          ],
+          "flagged_share": 0.5771,
+          "confusion": {
+            "tp": 725,
+            "fp": 31,
+            "tn": 508,
+            "fn": 46
+          }
+        }
+      },
+      "derived_label_counts": {
+        "ACTIVE_FIRE": 511,
+        "SMOKE_ONLY": 281,
+        "UNCERTAIN": 41,
+        "NO_VISIBLE_FIRE": 477
+      },
+      "export_sha256": "6935933a696cf1a6f5a4e18df8361af9d25403adf794693223b1225c5ecf9562",
+      "role": "one-time in-distribution report"
+    },
+    "xsrc_aof": {
+      "n": 8428,
+      "n_groups": 380,
+      "heads": {
+        "flames": {
+          "prevalence": 0.1583,
+          "roc_auc": 0.9648,
+          "roc_auc_ci95": [
+            0.949,
+            0.9768
+          ],
+          "pr_auc": 0.8743,
+          "pr_auc_ci95": [
+            0.807,
+            0.9167
+          ],
+          "temperature": 0.7122964572388175,
+          "threshold": 0.168011,
+          "ece_raw": 0.0197,
+          "ece_calibrated": 0.0403,
+          "brier_raw": 0.0517,
+          "brier_calibrated": 0.0542,
+          "fnr": 0.2946,
+          "fnr_ci95": [
+            0.2081,
+            0.4067
+          ],
+          "precision": 0.8417,
+          "precision_ci95": [
+            0.7666,
+            0.8903
+          ],
+          "flagged_share": 0.1327,
+          "confusion": {
+            "tp": 941,
+            "fp": 177,
+            "tn": 6917,
+            "fn": 393
+          }
+        },
+        "smoke": {
+          "prevalence": 0.3396,
+          "roc_auc": 0.7072,
+          "roc_auc_ci95": [
+            0.6743,
+            0.7419
+          ],
+          "pr_auc": 0.5531,
+          "pr_auc_ci95": [
+            0.4876,
+            0.6237
+          ],
+          "temperature": 0.7288709469998619,
+          "threshold": 0.658225,
+          "ece_raw": 0.1513,
+          "ece_calibrated": 0.1946,
+          "brier_raw": 0.2287,
+          "brier_calibrated": 0.2454,
+          "fnr": 0.5154,
+          "fnr_ci95": [
+            0.4661,
+            0.5643
+          ],
+          "precision": 0.5597,
+          "precision_ci95": [
+            0.485,
+            0.6341
+          ],
+          "flagged_share": 0.294,
+          "confusion": {
+            "tp": 1387,
+            "fp": 1091,
+            "tn": 4475,
+            "fn": 1475
+          }
+        }
+      },
+      "derived_label_counts": {
+        "NO_VISIBLE_FIRE": 5061,
+        "ACTIVE_FIRE": 974,
+        "UNCERTAIN": 391,
+        "SMOKE_ONLY": 2002
+      },
+      "export_sha256": "1f7f62045d3b8e72ac76d1325c8d22c8923b597fb8b3fb29216a258e8f3d0035",
+      "role": "held-out source: shift evaluation"
+    }
+  }
+}

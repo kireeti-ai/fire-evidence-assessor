@@ -1,0 +1,8 @@
+{
+  "_README": "TEMPLATE. Not an approval. A named human owner fills every field after reading docs/validation/validation_report.md and the limitations in artifact.json, then places this object under approval.record in artifact.json of a COPY of the bundle. No tool in this repository writes or fills it. artifact_binding_sha256 must equal the value printed by: python -m fire_assessor.artifact_tools digest <bundle-dir>. Editing any other field of artifact.json, or the weights or arrays, changes that digest and voids the record.",
+  "approver": null,
+  "approved_at": null,
+  "scope": null,
+  "evidence": [],
+  "artifact_binding_sha256": null
+}
