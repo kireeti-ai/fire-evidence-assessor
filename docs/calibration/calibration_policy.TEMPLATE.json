@@ -1,0 +1,11 @@
+{
+  "_README": "TEMPLATE. Every null must be filled by the model owner / stakeholders. fire_assessor.build_artifact calibrate refuses to run while any required value is null. Values below are NOT suggestions and NOT approved.",
+  "alpha": null,
+  "delta": null,
+  "margin": null,
+  "decided_by": null,
+  "decided_at": null,
+  "reference": null,
+  "ood": {"mode": null, "quantile": null, "min_auroc": null, "reason": null},
+  "authenticity": {"mode": null, "reason": null}
+}

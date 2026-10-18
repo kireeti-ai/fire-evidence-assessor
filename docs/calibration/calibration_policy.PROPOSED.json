@@ -1,0 +1,19 @@
+{
+  "_README": "PROPOSED policy, written by an AI coding session on the project owner's instruction ('your wish'). It is NOT an owner decision and NOT approved. A named human owner must confirm or replace every value before the artifact can be approved; changing any value requires rebuilding the artifact, which voids any approval. Values were fixed BEFORE the calibration export was inspected and are not tuned on the test or held-out-source partitions.",
+  "alpha": 0.05,
+  "delta": 0.10,
+  "margin": 0.05,
+  "decided_by": "PROPOSED by Claude Code session (not a human owner); pending confirmation by a named project owner",
+  "decided_at": "2026-10-18",
+  "reference": "docs/calibration/CALIBRATION_AND_EVALUATION_READINESS.md sections 3 and 5; every output is REQUIRES_REVIEW, so thresholds favour sensitivity (alpha 0.05 target false-negative rate) at the cost of more reviews",
+  "ood": {
+    "mode": "disable_by_policy",
+    "quantile": null,
+    "min_auroc": null,
+    "reason": "No independent control set of unrelated real images has been passed through the LoRA checkpoint, so the OOD detector cannot be validated (the existing control features come from the frozen base model). Shift is instead disclosed through limitations, and quality gates stay on."
+  },
+  "authenticity": {
+    "mode": "exclude_by_policy",
+    "reason": "Stage 1 bundle: the checkpoint has no authenticity head and the label policy for synthetic/edited content is not approved. Synthetic, edited and reused indications are reported as NOT_ASSESSED by this bundle (pHash reuse is a separate host-side index)."
+  }
+}

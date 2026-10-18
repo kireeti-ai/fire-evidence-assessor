@@ -17,9 +17,10 @@ LIMITS = """## Limitations (read first)
 
 
 def render(artifact_dir: str, results_json: str | None = None) -> str:
-    a = ModelArtifact.load(artifact_dir)
-    lines = [f"# Model card: {a.model_version}", "", LIMITS,
-             "## Operating point", f"- Thresholds: flames {a.thresholds.flames:.4f}, smoke {a.thresholds.smoke:.4f}",
+    a = ModelArtifact.load(artifact_dir, require_operational=False)
+    th = "NOT PROVIDED" if a.thresholds is None else f"flames {a.thresholds.flames:.4f}, smoke {a.thresholds.smoke:.4f}"
+    lines = [f"# Model card: {a.model_version}", "", f"**Artifact status: {a.status}**  (blockers: {len(a.blockers())})", "", LIMITS,
+             "## Operating point", f"- Thresholds: {th}",
              f"- Temperatures: {json.dumps(a.temperatures)}", f"- Uncertainty margin: {a.uncertainty_margin}",
              f"- OOD detector: {json.dumps(a.ood_info)}", f"- Authenticity head present: {a.auth_head is not None}", "",
              "## Provenance", "```json", json.dumps(a.metadata, indent=2, default=str), "```"]

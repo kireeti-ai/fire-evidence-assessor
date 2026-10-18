@@ -1,0 +1,15 @@
+{
+ "partition": "cal",
+ "rows_checked": 1310,
+ "rows_in_export": 1310,
+ "content_verified": 1310,
+ "ambiguous_near_duplicate": 0,
+ "mismatch": 0,
+ "own_cosine_min": 0.999625563621521,
+ "own_cosine_median": 0.9999992847442627,
+ "max_abs_logit_diff_max": 0.026390790939331055,
+ "max_abs_logit_diff_median": 0.0011185407638549805,
+ "tolerance_cosine": 0.002,
+ "labels_equal_manifest": true,
+ "note": "CONTENT_VERIFIED = own recomputed embedding matches the stored row and no other stored row matches within tol/2; AMBIGUOUS = matches own row but a sibling matches almost equally; MISMATCH = stored row is not this image."
+}

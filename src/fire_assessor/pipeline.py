@@ -15,7 +15,7 @@ from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeout
 from datetime import datetime
 from typing import Optional, Protocol
 
-from .artifact import ModelArtifact
+from .artifact import STATUS_APPROVED, ArtifactIncompleteError, ArtifactNotApprovedError, ModelArtifact
 from .authenticity import ReuseIndex, assess_authenticity
 from .calibration import sigmoid
 from .config import LIMITATIONS, AppConfig
@@ -47,8 +47,17 @@ def _unavailable(version: str, code: str) -> Assessment:
 
 class Assessor:
     def __init__(self, scorer: Scorer, artifact: ModelArtifact, config: AppConfig = AppConfig(),
-                 reuse_index: Optional[ReuseIndex] = None):
+                 reuse_index: Optional[ReuseIndex] = None, *, allow_unapproved: bool = False):
+        """Fail closed: no assessor without calibration values, and none on a non-APPROVED artifact unless the caller opts in
+        explicitly (`allow_unapproved=True`, for controlled offline evaluation only; every result is then marked research-only)."""
+        missing = [n for n, v in (("thresholds", artifact.thresholds), ("temperatures", artifact.temperatures),
+                                  ("uncertainty_margin", artifact.uncertainty_margin)) if v is None]
+        if missing:
+            raise ArtifactIncompleteError([f"calibration value missing: {m}" for m in missing])
+        if artifact.status != STATUS_APPROVED and not allow_unapproved:
+            raise ArtifactNotApprovedError(f"artifact status is {artifact.status}; operational inference requires APPROVED")
         self.scorer, self.artifact, self.cfg, self.index = scorer, artifact, config, reuse_index
+        self.research_only = artifact.status != STATUS_APPROVED
 
     def assess_bytes(self, data: bytes, image_id: str, *, upload_time: Optional[datetime] = None,
                      reported_location: Optional[tuple] = None) -> Assessment:
@@ -83,7 +92,10 @@ class Assessor:
                 assessment_status="COMPLETED", model_version=art.model_version,
                 scores=Scores(flames_visible=pf, smoke_visible=ps), derived_label=pol.derived_label,
                 review_priority=pol.review_priority, quality_flags=flags, ood_flag=ood_flag,
-                authenticity=Authenticity(status=status, signals=signals), limitations=list(LIMITATIONS))
+                authenticity=Authenticity(status=status, signals=signals), limitations=list(LIMITATIONS),
+                artifact_status=art.status)
+            if self.research_only:
+                res.limitations.append(f"RESEARCH USE ONLY: the model artifact is {art.status}; this output is not approved for operational use.")
         except ValidationError as e:
             log.warning("assessment unavailable image_id=%s code=%s", image_id, e.code)
             return _unavailable(art.model_version, e.code)

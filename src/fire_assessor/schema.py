@@ -48,3 +48,4 @@ class Assessment(BaseModel):
     authenticity: Authenticity = Field(default_factory=Authenticity)
     limitations: list[str] = Field(default_factory=list)
     error_code: Optional[str] = None
+    artifact_status: Optional[str] = None  # APPROVED / NOT_APPROVED / INCOMPLETE of the artifact that produced this (research use if not APPROVED)

@@ -1,0 +1,95 @@
+{
+ "_note": "Result of running fire_assessor.features.validate_export on the REAL stored lora_s0 exports (2026-10-16). No file was modified.",
+ "cal": {
+  "rows": 1310,
+  "arrays_in_file": [
+   "block",
+   "emb",
+   "groups",
+   "logits",
+   "source",
+   "y"
+  ],
+  "as_calibration_without_identity_evidence": {
+   "identity": "NOT_ESTABLISHED",
+   "blockers": [
+    "IDENTITY_NOT_ESTABLISHED",
+    "PARTITION_UNKNOWN"
+   ]
+  },
+  "as_calibration_with_content_verification_evidence": {
+   "identity": "CONTENT_VERIFIED",
+   "blockers": [],
+   "ok": true
+  }
+ },
+ "val": {
+  "rows": 1310,
+  "arrays_in_file": [
+   "block",
+   "emb",
+   "groups",
+   "logits",
+   "source",
+   "y"
+  ],
+  "as_calibration_without_identity_evidence": {
+   "identity": "NOT_ESTABLISHED",
+   "blockers": [
+    "IDENTITY_NOT_ESTABLISHED",
+    "PARTITION_UNKNOWN"
+   ]
+  }
+ },
+ "test": {
+  "rows": 1310,
+  "arrays_in_file": [
+   "block",
+   "emb",
+   "groups",
+   "logits",
+   "source",
+   "y"
+  ],
+  "as_calibration_without_identity_evidence": {
+   "identity": "NOT_ESTABLISHED",
+   "blockers": [
+    "IDENTITY_NOT_ESTABLISHED",
+    "PARTITION_UNKNOWN"
+   ]
+  }
+ },
+ "xsrc_aof": {
+  "rows": 8428,
+  "arrays_in_file": [
+   "block",
+   "emb",
+   "groups",
+   "logits",
+   "source",
+   "y"
+  ],
+  "as_calibration_without_identity_evidence": {
+   "identity": "NOT_ESTABLISHED",
+   "blockers": [
+    "IDENTITY_NOT_ESTABLISHED",
+    "PARTITION_UNKNOWN"
+   ]
+  }
+ },
+ "policy_template": {
+  "result": "REFUSED",
+  "missing": [
+   "alpha",
+   "delta",
+   "margin",
+   "decided_by",
+   "decided_at",
+   "reference",
+   "ood.mode ('enable' or 'disable_by_policy')",
+   "authenticity.mode='exclude_by_policy' with a reason (training an authenticity head needs an approved label policy and is not done here)"
+  ]
+ },
+ "lora_train_export": "NOT GENERATED: the LoRA-feature train export (needed for the OOD bank and the train/cal disjointness record) does not exist; the frozen-base features/dfire_clean.npz must not be used for it",
+ "ood_control_export": "NOT USABLE: features/control_clean.npz was extracted with the frozen base model, not the LoRA checkpoint; it must be regenerated through the checkpoint before it can evaluate OOD"
+}

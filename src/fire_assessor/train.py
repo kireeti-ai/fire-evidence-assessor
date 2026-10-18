@@ -153,15 +153,23 @@ def _predict(model, loader, dev):
 
 
 def export_features(args):
-    """Dump logits, embeddings and block-8 features for a partition (input to scripts/calibrate)."""
+    """Dump logits, embeddings and block-8 features for a partition (input to calibration / OOD fitting).
+
+    The export PRESERVES row identity: `paths` (manifest-relative image paths, in row order), `partition`, the manifest hash, the
+    checkpoint SHA-256, the source hash and the WiSE scale are saved in the file, so a consumer never has to infer identity from order.
+    """
     import torch
     from torch.utils.data import DataLoader
 
+    from .hashing import sha256_file, source_tree_hash
     from .model import TorchScorer
 
     dev = "cuda" if torch.cuda.is_available() else "cpu"  # CPU export of ~1.3k images took >25 min
     sc = TorchScorer.from_artifact(args.weights, args.backbone, device=dev, wise_alpha=args.wise_alpha)
-    rows = [r for r in read_manifest(args.manifest) if r["partition"] == args.partition]
+    all_rows = read_manifest(args.manifest)
+    rows = [r for r in all_rows if r["partition"] == args.partition]
+    if args.limit:
+        rows = rows[: args.limit]
     dl = DataLoader(ManifestDataset(rows, sc.pre, args.root), 64, num_workers=args.workers)
     L, Z, B, Y = [], [], [], []
     with torch.no_grad():
@@ -170,7 +178,10 @@ def export_features(args):
             L.append(lg.cpu().numpy()); Z.append(z.cpu().numpy()); B.append(bf.cpu().numpy()); Y.append(y.numpy())
     np.savez(args.out, logits=np.concatenate(L), emb=np.concatenate(Z), block=np.concatenate(B),
              y=np.concatenate(Y), groups=np.array([r.get("group", "") for r in rows]),
-             source=np.array([r.get("source", "") for r in rows]))
+             source=np.array([r.get("source", "") for r in rows]), paths=np.array([r["path"] for r in rows]),
+             partition=np.array([r["partition"] for r in rows]), manifest_hash=np.array(manifest_hash(all_rows)),
+             checkpoint_sha256=np.array(sha256_file(args.weights)), source_hash=np.array(source_tree_hash(Path(__file__).parent)),
+             backbone=np.array(args.backbone), wise_alpha=np.array(args.wise_alpha))
 
 
 def main(argv=None):
@@ -189,7 +200,7 @@ def main(argv=None):
     e.add_argument("--manifest", required=True); e.add_argument("--root", default="")
     e.add_argument("--weights", required=True); e.add_argument("--partition", required=True)
     e.add_argument("--out", required=True); e.add_argument("--backbone", default=CLIP_NAME)
-    e.add_argument("--wise-alpha", type=float, default=1.0); e.add_argument("--workers", type=int, default=4)
+    e.add_argument("--wise-alpha", type=float, default=1.0); e.add_argument("--limit", type=int, default=0, help="first N rows only (testing)"); e.add_argument("--workers", type=int, default=4)
     a = ap.parse_args(argv)
     run(a) if a.cmd == "train" else export_features(a)
 

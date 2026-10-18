@@ -1,0 +1,202 @@
+{
+  "record_version": 1,
+  "subject": "TerraWatch fire-image assessor checkpoint runs/lora_s0/weights.pt (seed 0)",
+  "status_note": "Facts below were VERIFIED by reproduction in the 2026-10-16 provenance audit unless marked otherwise. This record does not approve anything.",
+  "checkpoint": {
+    "object": "gs://terrawatch-fire-ace-478304/runs/lora_s0/weights.pt",
+    "sha256": "7bd5498f04838fe19240da2b7339d794cc5fc3948074a0d826c33303d5c42dfa",
+    "size_bytes": 345237991,
+    "gcs_crc32c": "dlSr1Q==",
+    "gcs_md5": null,
+    "gcs_generation_live": "1792100300386495 (written 2026-10-15T21:38:20Z)",
+    "gcs_generation_original_upload": "1792093898083962 (2026-10-15T19:51:38Z, soft-deleted, identical CRC32C and size)",
+    "training_finished_utc": "2026-10-15T19:46:45Z (run_config.json time field)",
+    "format": "torch zip; top-level {'model': state_dict}; 172 float32 tensors; 86,292,996 parameters; pickle globals limited to OrderedDict, FloatStorage, _rebuild_tensor_v2",
+    "contains": [
+      "ViT-B/16 vision tower (frozen base)",
+      "LoRA rank 8 on q and v, zero-indexed blocks 8-11",
+      "2x512 fire head",
+      "head0 (initial head copy)"
+    ],
+    "does_not_contain": [
+      "text tower",
+      "logit_scale",
+      "authenticity head",
+      "calibration",
+      "OOD state",
+      "optimizer state",
+      "configuration"
+    ]
+  },
+  "source": {
+    "declared_in_run_config": "srchash:c535f0ae41041492",
+    "hash_convention": "sha256 over bytes of every src/fire_assessor/*.py (sorted by file name); first 16 hex characters",
+    "base_commit": "8965c965f126f2a1d4b21a27677a42e278fb3a79",
+    "reconstruction": {
+      "description": "base_commit source, minus src/fire_assessor/model_card.py, with two later edits to train.py::export_features reversed (exact strings in scripts/reproduce_source_hash.py)",
+      "reproduces_declared_hash": true,
+      "command": "python3 -I scripts/reproduce_source_hash.py <repo_dir> 8965c96"
+    },
+    "available_source_hash_at_base_commit": "srchash:8f5b2bd60decd042",
+    "revision_retrievable": false,
+    "content_reproducible": true,
+    "limitations": [
+      "No commit, tag or archive of the training-time source tree exists: Git has one commit created after training and the training VM was deleted. The tree is reproducible by construction, not retrievable.",
+      "The two reversed edits are known from the authoring session's history; they are validated only by the 64-bit hash match.",
+      "The hash covers src/fire_assessor/*.py only. It does not cover scripts/ (e.g. build_dfire_manifest.py, which generated the splits), configuration, or dependency versions.",
+      "The working tree has since changed (path-preserving exporter, artifact contract); the reconstruction is defined against commit 8965c96, not the working tree."
+    ]
+  },
+  "initialization": {
+    "provider": "open_clip",
+    "model": "ViT-B-16-quickgelu",
+    "pretrained_tag": "openai",
+    "hf_hub_repo": "timm/vit_base_patch16_clip_224.openai",
+    "revision": "977e3dd0ec55ab8da155f2fbeb6b5f54948b6e3d",
+    "file": "open_clip_model.safetensors",
+    "file_size_bytes": 598516980,
+    "weights_sha256": "4b8699299b1e8997753c64b052ba32031449d5d853f55a039148560ee02b820f",
+    "weights_sha256_source": "Hugging Face LFS metadata for that revision; NOT recomputed (only byte ranges were fetched)",
+    "original_release": {
+      "url": "https://openaipublic.azureedge.net/clip/models/5806e77cd80f8b59890b7e101eabd078d9fb84e6937f9e85e4ecb61988df416f/ViT-B-16.pt",
+      "sha256_in_url_path": "5806e77cd80f8b59890b7e101eabd078d9fb84e6937f9e85e4ecb61988df416f",
+      "compared": false
+    },
+    "licence_tag_on_hub": "apache-2.0",
+    "verification": {
+      "method": "HTTP range reads of the reference safetensors vs the checkpoint's frozen vision tensors",
+      "tensors_compared": 56,
+      "bit_identical": 56,
+      "megabytes_compared": 118,
+      "script": "scripts/compare_pretrained.py",
+      "compared": [
+        "visual.class_embedding",
+        "visual.positional_embedding",
+        "visual.proj",
+        "visual.conv1.weight",
+        "visual.ln_pre.{weight,bias}",
+        "visual.ln_post.{weight,bias}",
+        "blocks 0, 5, 8, 11: ln_1, ln_2, attn in_proj/out_proj (weights and biases; under attn.mha.* in LoRA blocks 8 and 11), mlp c_fc/c_proj (weights and biases)"
+      ],
+      "not_compared": [
+        "blocks 1, 2, 3, 4, 6, 7, 9, 10 (96 of 152 visual tensors); assumed unchanged because all visual parameters were frozen in the training code (hash-reproduced)",
+        "equality with OpenAI's original ViT-B-16.pt (only the timm Hugging Face conversion was compared)",
+        "the base-weights file actually read at training time: its hash and any cache manifest were not recorded"
+      ],
+      "supporting": "head0 rows align with the pretrained text embeddings (cosine 0.94 flames / 0.96 smoke); training log shows a Hugging Face Hub request and no 'No pretrained weights loaded' warning in the training phase"
+    }
+  },
+  "training_manifest": {
+    "manifest_hash": "c04b4b2f551957d759468cfa699cad827c394189bd65a65164d475b346dd2789",
+    "definition": "fire_assessor.splits.manifest_hash over the rows of dfire_train.csv = gs://.../manifests/dfire_manifest.csv with partition := partition_xsrc",
+    "reproduced": true,
+    "images": 21527,
+    "clusters": 10670,
+    "partitions": {
+      "train": 9169,
+      "val": 1310,
+      "cal": 1310,
+      "test": 1310,
+      "xsrc_aof": 8428
+    },
+    "train_sources": {
+      "WEB": 8204,
+      "PublicDataset": 965,
+      "AoF": 0
+    },
+    "clusters_spanning_partitions": 0,
+    "labels": "flames = any fire box (YOLO class 1), smoke = any smoke box (class 0); image-level counts equal the D-Fire README",
+    "dataset_archive_sha256": "65d81b602991261b47ddc71281e99108362a30336a448e1f8d21352c825c6d83",
+    "dataset_licence": "CC0 per dataset repository; authors state they hold no copyright over the images; HPWREN frames (CC BY-NC 4.0) were found inside D-Fire (sample)"
+  },
+  "training_config": {
+    "declared": {
+      "backbone": "ViT-B-16-quickgelu",
+      "pretrained": "openai",
+      "lora_rank": 8,
+      "lr_lora": 0.0001,
+      "lr_head": 0.001,
+      "weight_decay": 0.01,
+      "epochs": 10,
+      "batch_size": 32,
+      "patience": 3,
+      "label_smoothing": 0.05,
+      "seed": 0,
+      "pos_weight": false
+    },
+    "derived_from_hash_reproduced_source": {
+      "lora_alpha": 16.0,
+      "lora_scale": 1.0,
+      "optimizer": "AdamW (two parameter groups)",
+      "schedule": "5% warm-up then cosine",
+      "loss": "BCE-with-logits on y*0.95+0.025",
+      "train_augmentation": "RandomResizedCrop(224, scale 0.6-1.0), horizontal flip, rotation 8, ColorJitter(0.2,0.2,0.1,0), 20% GaussianBlur(5), then ToTensor+Normalize",
+      "checkpoint_selection": "best validation macro PR-AUC (partition 'val' only); best epoch = 9 of 0-9, patience never triggered"
+    },
+    "best_val_macro_pr_auc": 0.9872735744934726
+  },
+  "output_semantics": {
+    "names": [
+      "flames_visible",
+      "smoke_visible"
+    ],
+    "logit_0": "flames",
+    "logit_1": "smoke",
+    "evidence": "initial head rows align with flames/smoke prompt embeddings; trained logits are label-specific (AUC 0.991 vs 0.854 and 0.986 vs 0.653); data.yaml names [smoke, fire] and manifest image-level counts equal the D-Fire README"
+  },
+  "preprocessing": {
+    "verified_against": "open_clip 3.3.0 pretrained cfg; CPU inference reproduces stored GPU logits within 0.0095 (24 test images) / 0.026 (1310 cal images)"
+  },
+  "training_environment": {
+    "recorded_in_any_artifact": false,
+    "fully_reproducible": false,
+    "missing": [
+      "Python version",
+      "torch / torchvision / CUDA / driver versions",
+      "open_clip_torch version during training (the audit machine used 3.3.0)",
+      "pip freeze / lockfile",
+      "determinism settings (cudnn, dataloader worker seeding)",
+      "hardware identity as an artifact (an NVIDIA L4 appears only in session history)",
+      "full stdout of the run (stored logs are progress-bar output)",
+      "base-weights file hash read at training time"
+    ],
+    "note": "Do not describe this training run as reproducible. Seed 0 has not been re-run, so bit-for-bit or statistical reproducibility is untested."
+  },
+  "evaluation_evidence": {
+    "seed0_recomputed_from_stored_exports": {
+      "test_in_distribution": {
+        "flames_roc_auc": 0.9913,
+        "smoke_roc_auc": 0.9857
+      },
+      "held_out_source_aof": {
+        "flames_roc_auc": 0.9648,
+        "smoke_roc_auc": 0.7072,
+        "smoke_pr_auc": 0.5531
+      }
+    },
+    "three_seed_tables": "docs/experiments/05_fire_smoke_lora_vs_cnn.md",
+    "false_negative_bound_under_shift": "29% flames / 52% smoke observed vs 5% placeholder target on the held-out source",
+    "not_available": [
+      "any citizen phone-photo evaluation",
+      "test set used once with an access log"
+    ]
+  },
+  "calibration_identity": {
+    "export": "gs://terrawatch-fire-ace-478304/runs/lora_s0/cal.npz (crc32c 9mg7Xg==; no per-row paths in the file)",
+    "method": "content verification: every manifest 'cal' image re-run on CPU through this checkpoint; embedding compared with the stored row",
+    "result": "1310/1310 rows CONTENT_VERIFIED, 0 ambiguous, 0 mismatched; own-row cosine min 0.9996, median 0.9999993",
+    "evidence": [
+      "docs/provenance/lora_s0_cal_identity_summary.json",
+      "docs/provenance/lora_s0_cal_row_map.csv"
+    ],
+    "script": "scripts/verify_calibration_identity.py",
+    "caveat": "verified in a different environment (CPU, open_clip 3.3.0); stored rows carry no IDs, so the mapping is by content, recorded in the row map"
+  },
+  "verification_scripts": [
+    "scripts/reproduce_source_hash.py",
+    "scripts/compare_pretrained.py",
+    "scripts/reproduce_logits.py",
+    "scripts/verify_calibration_identity.py",
+    "src/fire_assessor/checkpoint.py (torch-free inspector)"
+  ]
+}

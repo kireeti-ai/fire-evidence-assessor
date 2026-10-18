@@ -5,6 +5,9 @@ from dataclasses import dataclass, field
 
 MODEL_VERSION = "fire-assessor-v1.0.0"
 
+# Order of the two fire-head logits. Logit 0 = flames, logit 1 = smoke (verified against labels, see docs/provenance).
+OUTPUT_NAMES = ("flames_visible", "smoke_visible")
+
 LIMITATIONS = (
     "The image alone does not establish location or time.",
     "The assessment does not confirm a wildfire.",

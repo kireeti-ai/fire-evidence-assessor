@@ -11,6 +11,13 @@ Implements `TerraWatch_Fire_Evidence_Assessor_Final_Design_v2.md`. It never conf
 - `scripts/` data manifest + splits, benchmarks, edit/synthetic set builders, feature extraction, evaluations.
 - `docs/data/` license table, data card, result files.
 
+## Artifact preparation and integration readiness (no operational inference)
+- `docs/provenance/` source and initialization spec, machine-readable provenance record, calibration-row identity evidence.
+- `docs/artifact/ARTIFACT_CONTRACT.md` the fail-closed artifact contract (`artifact.json` / `weights.pt` / `arrays.npz`), tooling and verification results.
+- `docs/calibration/` partition roles, threshold procedure, blockers, policy template (all decisions null).
+- `docs/integration/WEBSITE_INTEGRATION_CHECKLIST.md` checklist for the website repo (not accessible here; nothing integrated).
+- Current status: **checkpoint `lora_s0` is not approved; its artifact is INCOMPLETE; operational inference is disabled.**
+
 ## Experiments and notebooks
 - `docs/experiments/` experiment write-ups, generated from `docs/data/*.json` by `scripts/make_experiment_docs.py` (numbers are copied, never retyped).
 - `notebooks/` executed notebooks with charts: `01` data/splits/pHash, `02` edited-image detection, `03` fire/smoke models + calibration + risk control,
