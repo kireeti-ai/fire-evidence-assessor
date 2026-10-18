@@ -3,7 +3,7 @@
 # Never writes an approval record. Refuses to overwrite an existing output directory.
 # Usage: scripts/build_production_bundle.sh WEIGHTS_PT EXPORT_DIR OUT_DIR [POLICY_JSON]
 set -euo pipefail
-WEIGHTS=${1:?weights.pt}; EXPORTS=${2:?dir with export_{train,cal,val,test,xsrc_aof}.npz}; OUT=${3:?output dir}
+WEIGHTS=${1:?weights.pt}; EXPORTS=${2:?dir containing the five export_PARTITION.npz files}; OUT=${3:?output dir}
 POLICY=${4:-docs/calibration/calibration_policy.PROPOSED.json}
 EXPECTED=7bd5498f04838fe19240da2b7339d794cc5fc3948074a0d826c33303d5c42dfa
 [ ! -e "$OUT" ] || { echo "refusing: $OUT exists"; exit 2; }

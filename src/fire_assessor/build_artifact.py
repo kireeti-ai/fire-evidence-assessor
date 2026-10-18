@@ -210,12 +210,12 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("prepare"); p.add_argument("--weights", required=True); p.add_argument("--provenance", required=True); p.add_argument("--out", required=True)
-    p.add_argument("--expected-sha256")
+    p.add_argument("--expected-sha256"); p.add_argument("--model-version", default=MODEL_VERSION)
     c = sub.add_parser("calibrate"); c.add_argument("--base", required=True); c.add_argument("--train", required=True); c.add_argument("--cal", required=True)
     c.add_argument("--policy", required=True); c.add_argument("--identity-summary"); c.add_argument("--control"); c.add_argument("--auth-data"); c.add_argument("--out", required=True)
     a = ap.parse_args(argv)
     if a.cmd == "prepare":
-        art = prepare_incomplete(a.weights, a.provenance, a.out, expected_sha256=a.expected_sha256)
+        art = prepare_incomplete(a.weights, a.provenance, a.out, expected_sha256=a.expected_sha256, model_version=a.model_version)
     else:
         ev = json.loads(Path(a.identity_summary).read_text()) if a.identity_summary else None
         if ev is not None:

@@ -1,0 +1,44 @@
+{
+ "_README": "PROPOSED policy, written by an AI coding session on the project owner's instruction ('your wish'). It is NOT an owner decision and NOT approved. A named human owner must confirm or replace every value before the artifact can be approved; changing any value requires rebuilding the artifact, which voids any approval. Values were fixed BEFORE the calibration export was inspected and are not tuned on the test or held-out-source partitions.",
+ "alpha": 0.05,
+ "delta": 0.1,
+ "margin": 0.05,
+ "decided_by": "PROPOSED by Claude Code session (not a human owner); pending confirmation by a named project owner",
+ "decided_at": "2026-10-18",
+ "reference": "docs/calibration/CALIBRATION_AND_EVALUATION_READINESS.md sections 3 and 5; every output is REQUIRES_REVIEW, so thresholds favour sensitivity (alpha 0.05 target false-negative rate) at the cost of more reviews",
+ "ood": {
+  "mode": "disable_by_policy",
+  "quantile": null,
+  "min_auroc": null,
+  "reason": "No independent control set of unrelated real images has been passed through the LoRA checkpoint, so the OOD detector cannot be validated (the existing control features come from the frozen base model). Shift is instead disclosed through limitations, and quality gates stay on."
+ },
+ "authenticity": {
+  "mode": "include_head",
+  "target_fpr": 0.05,
+  "delta_fpr": 0.1,
+  "inconclusive_fpr": 0.15,
+  "l2_grid": [
+   0.001,
+   0.01,
+   0.1,
+   1.0
+  ],
+  "l2_auc_tolerance": 0.002,
+  "class_weight": "balanced",
+  "seed": 0,
+  "negative_sources": [
+   "synth_set",
+   "edit_set"
+  ],
+  "label_policy": {
+   "version": "AUTH-LABELS-PROPOSED-1",
+   "synthetic": "1 = generated image from any generator in the synthetic set; 0 = every real image (D-Fire originals, benign-edited originals, edited composites, control frames)",
+   "edited_or_composited": "1 = paste_flames, paste_smoke, cover_region edits; 0 = untouched originals and benign edits (crop, brightness, contrast/colour, resize, JPEG); undefined (excluded) for generated images",
+   "real_negatives": "D-Fire originals are ASSUMED real and unedited (no provenance check is possible)",
+   "status": "PROPOSED; confirmation by a named human owner required"
+  },
+  "decided_by": "PROPOSED by Claude Code session (not a human owner); pending confirmation by a named project owner",
+  "decided_at": "2026-10-18",
+  "reference": "docs/authenticity/AUTH_HEAD_PLAN.md sections 2-5"
+ }
+}
